@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .login-container {
+      position: relative;
+      width: 300px;
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 20px;
+      background-color: #111111;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .login-container::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: conic-gradient(#ffffff, #888888, #ffffff);
+      animation: spin 6s linear infinite;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .logo-container {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      border-radius: 50%;
+      background-color: #222;
+      padding: 10px;
+      border: 2px solid #444;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 25px;
+      border: 1px solid #333333;
+      text-align: center;
+      background-color: #222222;
+      color: #fff;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #ffffff, #888888);
+      padding: 12px;
+      border: none;
+      width: 100%;
+      border-radius: 25px;
+      color: #000000;
+      font-weight: bold;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #888888, #ffffff);
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+
+    .links a {
+      color: #cccccc;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    .error {
+      color: #ff5555;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+
+    .success {
+      color: #88ff88;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="Logo.png" alt="Logo" class="logo">
+    </div>
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button class="btn" onclick="login()">Login</button>
+    <div class="links">
+      <a href="#">Forgot Password</a>
+      <a href="sign-up.html">Sign Up</a>
+    </div>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
+
+      const validUsername = "Admin";
+      const validPassword = "12345";
+
+      if (!username || !password) {
+        message.innerHTML = "<p class='error'>Please fill in both fields.</p>";
+      } else if (username === validUsername && password === validPassword) {
+        message.innerHTML = "<p class='success'>Login successful! Redirecting...</p>";
+        setTimeout(function() {
+          window.location.href = "menu.html";
+        }, 1000);
+      } else {
+        message.innerHTML = "<p class='error'>Incorrect username or password.</p>";
+      }
+    }
+  </script>
+
+</body>
+</html>

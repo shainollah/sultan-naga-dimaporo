@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipality of Sultan Naga Dimaporo - Lanao del Norte</title>
+    <style>
+        :root {
+            --primary-color: #333333;
+            --secondary-color: #000000; 
+            --text-color: #333333;
+            --light-color: #FFFFFF; 
+            --accent-color: #CCCCCC; 
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+       
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 50%;
+            border: 2px solid white;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .site-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        nav {
+            background-color: var(--secondary-color);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: none;
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--secondary-color);
+            width: 250px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            flex-direction: column;
+        }
+        
+        .nav-links.active {
+            display: flex;
+        }
+        
+        .nav-links li {
+            position: relative;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-links li:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .nav-links li:hover a {
+            transform: translateY(-3px);
+        }
+        
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1000;
+        }
+        
+       
+        .hero {
+            height: 80vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(Welcome.jpg);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 106px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .hero-btn:hover {
+            background-color: transparent;
+            border: 2px solid white;
+            transform: translateY(-3px);
+        }
+    
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+       
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+       
+        .barangays {
+            background-color: #f8f8f8;
+        }
+        
+        .barangays-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .barangay-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .barangay-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .barangay-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .barangay-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .barangay-card:hover .barangay-img img {
+            transform: scale(1.1);
+        }
+        
+        .barangay-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .barangay-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+      
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-info {
+            padding: 20px;
+        }
+        
+        .service-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .news {
+            background-color: #f8f8f8;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-img img {
+            transform: scale(1.1);
+        }
+        
+        .news-info {
+            padding: 20px;
+        }
+        
+        .news-date {
+            display: block;
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+        
+        
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+       
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInFromBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .animate-slide-in {
+            animation: slideInFromBottom 1s ease-in-out;
+        }
+        
+        
+        @media (max-width: 992px) {
+            .site-title {
+                font-size: 1.3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                width: 100%;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .site-title {
+                font-size: 1.1rem;
+            }
+            
+            .site-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .hero {
+                height: 60vh;
+                margin-top: 96px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="Logo.png" alt="Municipality of Sultan Naga Dimaporo Logo">
+                </div>
+                <div>
+                    <div class="site-title">Municipality of Sultan Naga Dimaporo</div>
+                    <div class="site-subtitle">Lanao del Norte</div>
+                </div>
+            </div>
+            <button class="hamburger">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#barangays">Barangays</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    
+     
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Sultan Naga Dimaporo</h1>
+            <p>The Progressive Municipality in the Heart of Lanao del Norte</p>
+            <a href="#about" class="hero-btn">Explore More</a>
+        </div>
+    </section>
+    
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Sultan Naga Dimaporo</h2>
+            <div class="about-content">
+                <div class="about-text animate-fade-in">
+                    <p>Sultan Naga Dimaporo is a first-class municipality in the province of Lanao del Norte, Philippines. It is located in the western part of the province, along the coast of Illana Bay. The municipality serves as a major agricultural center in the region.</p>
+                    <p>Formerly known as Karomatan, the municipality was renamed Sultan Naga Dimaporo in 1956 after a prominent Maranao leader and politician. The area has a rich cultural heritage influenced by Maranao traditions and Islamic practices.</p>
+                    <p>Sultan Naga Dimaporo is known for its agricultural economy, with rice, corn, coconut, and various fruits as major crops. The municipality also has significant fishing activities along its coastal areas.</p>
+                    <p>With a diverse population, Sultan Naga Dimaporo celebrates its cultural heritage through various festivals and events throughout the year, showcasing the municipality's arts, traditions, and agricultural products.</p>
+                    <p>The municipality is led by the local government unit headed by the Municipal Mayor, along with the Vice Mayor and members of the Sangguniang Bayan (Municipal Council).</p>
+                </div>
+                <div class="about-image animate-slide-in">
+                    <img src="about.jpg" alt="Sultan Naga Dimaporo Municipal Hall">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="barangays" class="barangays">
+        <div class="container">
+            <h2 class="section-title">Our Barangays</h2>
+            <div class="barangays-grid">
+                <div class="barangay-card animate-fade-in">
+                    <div class="barangay-img">
+                        <img src="Parang.jpg" alt="Barangay Parang">
+                    </div>
+                    <div class="barangay-info">
+                        <h3>Parang</h3>
+                        <p>Home to diverse agricultural products and friendly communities.</p>
+                    </div>
+                </div>
+                
+                <div class="barangay-card animate-fade-in">
+                    <div class="barangay-img">
+                        <img src="Poblacion.jpg" alt="Barangay Poblacion">
+                    </div>
+                    <div class="barangay-info">
+                        <h3>Poblacion</h3>
+                        <p>The central commercial and administrative hub of the municipality.</p>
+                    </div>
+                </div>
+                
+                <div class="barangay-card animate-fade-in">
+                    <div class="barangay-img">
+                        <img src="Maliwanag.jpg" alt="Barangay Maliwanag">
+                    </div>
+                    <div class="barangay-info">
+                        <h3>Maliwanag</h3>
+                        <p>A vibrant community known for its educational institutions.</p>
+                    </div>
+                </div>
+                
+                <div class="barangay-card animate-fade-in">
+                    <div class="barangay-img">
+                        <img src="Rebucon.jpg" alt="Barangay Rebucon">
+                    </div>
+                    <div class="barangay-info">
+                        <h3>Rebucon</h3>
+                        <p>A rural barangay with rich cultural heritage and traditions.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+     
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Municipal Services</h2>
+            <div class="services-grid">
+                <div class="service-card animate-fade-in">
+                    <div class="service-img">
+                        <img src="bussniss.jpg" alt="Business Permits and Licensing">
+                    </div>
+                    <div class="service-info">
+                        <h3>Business Permits and Licensing</h3>
+                        <p>The Municipality of Sultan Naga Dimaporo provides efficient processing of business permits, licenses, and other related documents. Our Business Permits and Licensing Office (BPLO) is committed to providing quality service to all business owners in the municipality.</p>
+                        <p>Business Hours: Monday to Friday, 8:00 AM to 5:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-img">
+                        <img src="Civil Registry.jpg" alt="Civil Registry">
+                    </div>
+                    <div class="service-info">
+                        <h3>Civil Registry</h3>
+                        <p>The Municipal Civil Registry Office manages and records vital statistics including births, deaths, marriages, and other civil registry documents. We ensure that all records are well-maintained and accessible to citizens when needed.</p>
+                        <p>Available Services: Birth Certificate, Marriage Certificate, Death Certificate, CENOMAR, and other civil registry documents.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-img">
+                        <img src="Health.jpg" alt="Health Services">
+                    </div>
+                    <div class="service-info">
+                        <h3>Health Services</h3>
+                        <p>The Municipal Health Office provides comprehensive health services to residents, including medical consultations, maternal and child health care, immunization, and nutrition programs. Our team of healthcare professionals is dedicated to ensuring the well-being of the entire community.</p>
+                        <p>Regular Health Programs: Immunization, Maternal Care, Dental Services, Nutrition Programs, and more.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-img">
+                        <img src="Agriculture Support.jpg" alt="Agriculture Support">
+                    </div>
+                    <div class="service-info">
+                        <h3>Agriculture Support</h3>
+                        <p>The Municipal Agriculture Office provides technical assistance, resources, and support to farmers and agricultural workers. We offer various programs aimed at improving agricultural productivity, sustainability, and income generation.</p>
+                        <p>Programs: Farm Input Subsidies, Technical Training, Market Linkages, and Crop Insurance Assistance.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-img">
+                        <img src="Social Welfare Services.jpg" alt="Social Welfare Services">
+                    </div>
+                    <div class="service-info">
+                        <h3>Social Welfare Services</h3>
+                        <p>The Municipal Social Welfare and Development Office provides various social welfare programs and services to vulnerable sectors including children, elderly, persons with disabilities, and families in need. We aim to improve the quality of life of our constituents through our support programs.</p>
+                        <p>Services: Financial Assistance, Relief Operations, Community Development, and Livelihood Programs.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-img">
+                        <img src="Education Support.jpg" alt="Education Support">
+                    </div>
+                    <div class="service-info">
+                        <h3>Education Support</h3>
+                        <p>The municipality actively supports educational initiatives through scholarships, school facilities improvement, and educational assistance programs. We believe that education is key to the development of our community.</p>
+                        <p>Programs: Municipal Scholarship Program, School Supplies Distribution, and Educational Infrastructure Support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   
+    <section id="news" class="news">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <div class="news-grid">
+                <div class="news-card animate-fade-in">
+                    <div class="news-img">
+                        <img src="Infrastructure Development.jpg" alt="Infrastructure Development">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">May 10, 2025</span>
+                        <h3>New Public Market Construction Underway</h3>
+                        <p>The construction of the new Sultan Naga Dimaporo Public Market has officially begun. This modern facility will provide better spaces for vendors and improved shopping experience for residents.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-fade-in">
+                    <div class="news-img">
+                        <img src="health Program.jpg" alt="Health Program">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">April 28, 2025</span>
+                        <h3>Free Medical Mission Serves Over 500 Residents</h3>
+                        <p>The Municipality of Sultan Naga Dimaporo, in partnership with various health organizations, conducted a successful medical mission that provided free check-ups, medicines, and minor surgeries to over 500 residents.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-fade-in">
+                    <div class="news-img">
+                        <img src="Agricultural Program.jpg" alt="Agricultural Program">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">April 15, 2025</span>
+                        <h3>Agricultural Support Program Launched</h3>
+                        <p>The Municipal Agriculture Office has launched a new program to support local farmers with subsidized farm inputs, technical training, and marketing assistance to boost agricultural productivity in the region.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-fade-in">
+                    <div class="news-img">
+                        <img src="Education Program.jpg" alt="Education Program">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">March 30, 2025</span>
+                        <h3>Municipal Scholarship Program Opens Applications</h3>
+                        <p>The Municipality of Sultan Naga Dimaporo has announced the opening of applications for the 2025-2026 Municipal Scholarship Program for deserving students from low-income families.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-fade-in">
+                    <div class="news-img">
+                        <img src="Cultural Festival.jpg" alt="Cultural Festival">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">March 15, 2025</span>
+                        <h3>Annual Cultural Festival Celebrates Local Heritage</h3>
+                        <p>The annual cultural festival of Sultan Naga Dimaporo showcased the rich heritage and traditions of the municipality through various performances, exhibits, and activities that highlighted local arts and crafts.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-fade-in">
+                    <div class="news-img">
+                        <img src="Road Infrastructure.jpg" alt="Road Infrastructure">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">February 28, 2025</span>
+                        <h3>Major Road Improvement Project Completed</h3>
+                        <p>The municipality has completed the improvement of major roads connecting several barangays, enhancing transportation and accessibility for residents and supporting local economic activities.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>📍</i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Address</h4>
+                            <p>Municipal Hall, Karomatan, Sultan Naga Dimaporo, Lanao del Norte, Philippines</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>📞</i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+6393610215</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>✉️</i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>sndimaporo@yahoo.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i>⏰</i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Office Hours</h4>
+                            <p>Monday to Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="Logo.png" alt="Municipality of Sultan Naga Dimaporo Logo">
+                    <p>Municipality of Sultan Naga Dimaporo</p>
+                    <p>Lanao del Norte, Philippines</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#barangays">Barangays</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Important Links</h3>
+                    <ul>
+                        <li><a href="#">Government Services</a></li>
+                        <li><a href="#">Transparency Seal</a></li>
+                        <li><a href="#">Bids and Awards</a></li>
+                        <li><a href="#">Disaster Risk Reduction</a></li>
+                        <li><a href="#">Tourism</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Municipality of Sultan Naga Dimaporo. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.addEventListener('click', (event) => {
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                navLinks.classList.remove('active');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.barangay-card, .service-card, .news-card').forEach(card => {
+            card.classList.remove('animate-fade-in');
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
